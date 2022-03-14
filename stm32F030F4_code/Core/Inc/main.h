@@ -50,6 +50,8 @@ extern "C" {
 
 /* USER CODE END EM */
 
+void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
+
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
 
@@ -58,6 +60,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define charge_det_Pin GPIO_PIN_1
+#define charge_det_GPIO_Port GPIOA
+#define buzzer_mute_Pin GPIO_PIN_5
+#define buzzer_mute_GPIO_Port GPIOA
+#define SW_A_Pin GPIO_PIN_6
+#define SW_A_GPIO_Port GPIOA
+#define SW_B_Pin GPIO_PIN_7
+#define SW_B_GPIO_Port GPIOA
+#define SW_C_Pin GPIO_PIN_1
+#define SW_C_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
