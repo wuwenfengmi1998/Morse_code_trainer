@@ -60,6 +60,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define tack_A_Pin GPIO_PIN_0
+#define tack_A_GPIO_Port GPIOF
+#define tack_B_Pin GPIO_PIN_1
+#define tack_B_GPIO_Port GPIOF
 #define charge_det_Pin GPIO_PIN_1
 #define charge_det_GPIO_Port GPIOA
 #define buzzer_mute_Pin GPIO_PIN_5

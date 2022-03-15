@@ -351,11 +351,18 @@ static void MX_GPIO_Init(void)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOF_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(buzzer_mute_GPIO_Port, buzzer_mute_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : tack_A_Pin tack_B_Pin */
+  GPIO_InitStruct.Pin = tack_A_Pin|tack_B_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
   /*Configure GPIO pin : charge_det_Pin */
   GPIO_InitStruct.Pin = charge_det_Pin;
