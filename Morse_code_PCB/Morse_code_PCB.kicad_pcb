@@ -113,7 +113,7 @@
 
   (footprint "Connector_Audio:Jack_3.5mm_PJ320D_Horizontal" (layer "F.Cu")
     (tedit 5C06A514) (tstamp 14bfbe5a-dddf-442c-9df8-4d6c9030e865)
-    (at 44.41 130.91)
+    (at 45.89 126.48)
     (descr "Headphones with microphone connector, 3.5mm, 4 pins (http://www.qingpu-electronics.com/en/products/WQP-PJ320D-72.html)")
     (tags "3.5mm jack mic microphone phones headphones 4pins audio plug")
     (property "Sheetfile" "Morse_code_PCB.kicad_sch")
@@ -382,7 +382,7 @@
 
   (footprint "Connector_Audio:Jack_3.5mm_PJ320D_Horizontal" (layer "F.Cu")
     (tedit 5C06A514) (tstamp 3263b5f7-8027-473f-bb36-bbe701aa4ed1)
-    (at 44.41 141.96)
+    (at 45.89 137.53)
     (descr "Headphones with microphone connector, 3.5mm, 4 pins (http://www.qingpu-electronics.com/en/products/WQP-PJ320D-72.html)")
     (tags "3.5mm jack mic microphone phones headphones 4pins audio plug")
     (property "Sheetfile" "Morse_code_PCB.kicad_sch")
@@ -607,7 +607,7 @@
 
   (footprint "Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12" (layer "F.Cu")
     (tedit 5D3C0721) (tstamp e1ab8f9f-19cc-4c98-a11e-6925638e1584)
-    (at 56.85 131.18)
+    (at 58.33 126.75)
     (descr "USB Type-C receptacle for USB 2.0 and PD, http://www.krhro.com/uploads/soft/180320/1-1P320120243.pdf")
     (tags "usb usb-c 2.0 pd")
     (property "Sheetfile" "Morse_code_PCB.kicad_sch")
