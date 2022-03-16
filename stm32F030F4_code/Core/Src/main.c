@@ -356,7 +356,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(buzzer_mute_GPIO_Port, buzzer_mute_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, buzzer_mute_Pin|PWR_EN_Pin|RUN_LED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : tack_A_Pin tack_B_Pin */
   GPIO_InitStruct.Pin = tack_A_Pin|tack_B_Pin;
@@ -370,12 +370,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(charge_det_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : buzzer_mute_Pin */
-  GPIO_InitStruct.Pin = buzzer_mute_Pin;
+  /*Configure GPIO pins : buzzer_mute_Pin PWR_EN_Pin RUN_LED_Pin */
+  GPIO_InitStruct.Pin = buzzer_mute_Pin|PWR_EN_Pin|RUN_LED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(buzzer_mute_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SW_A_Pin SW_B_Pin */
   GPIO_InitStruct.Pin = SW_A_Pin|SW_B_Pin;

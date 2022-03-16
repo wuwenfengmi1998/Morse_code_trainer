@@ -74,6 +74,10 @@ void Error_Handler(void);
 #define SW_B_GPIO_Port GPIOA
 #define SW_C_Pin GPIO_PIN_1
 #define SW_C_GPIO_Port GPIOB
+#define PWR_EN_Pin GPIO_PIN_13
+#define PWR_EN_GPIO_Port GPIOA
+#define RUN_LED_Pin GPIO_PIN_14
+#define RUN_LED_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
