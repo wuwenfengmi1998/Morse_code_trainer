@@ -2901,6 +2901,9 @@
   (gr_text "X  X  G  V" (at 122.1 139.9) (layer "B.SilkS") (tstamp cf6ceb34-85ec-4670-9485-b3cd0c69bb94)
     (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
   )
+  (gr_text "Morse code practice\nDesigned by Kevin\n2022-3-18" (at 107.3 157.4) (layer "B.SilkS") (tstamp d2d5f057-3d3f-4824-ba53-bea972f61938)
+    (effects (font (size 1 1) (thickness 0.15)) (justify mirror))
+  )
 
   (via (at 71.7 160.3) (size 3.1) (drill 3) (layers "F.Cu" "B.Cu") (free) (net 0) (tstamp 31cc3983-9b6f-4ec2-90d9-385882615acd))
   (via (at 128.3 133.7) (size 3.1) (drill 3) (layers "F.Cu" "B.Cu") (free) (net 0) (tstamp 3c70dee1-9664-4d68-9e46-2890a0d7d1e7))
