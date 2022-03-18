@@ -1,0 +1,9 @@
+### Module positions - created on Fri Mar 18 21:37:40 2022 ###
+### Printed by Pcbnew version (6.0.2)
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val                Package                            PosX       PosY       Rot  Side
+J2        INPUT              Jack_3.5mm_PJ320D_Horizontal    -6.9300    13.2000    0.0000  bottom
+J5        Conn_01x04_Female  SIP-4                          -52.1000    24.3000    0.0000  bottom
+R15       *R0                R_0402_1005Metric              -21.2000    16.6500   90.0000  bottom
+## End

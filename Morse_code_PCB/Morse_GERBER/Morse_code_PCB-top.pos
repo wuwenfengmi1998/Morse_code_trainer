@@ -1,0 +1,64 @@
+### Module positions - created on Fri Mar 18 21:37:40 2022 ###
+### Printed by Pcbnew version (6.0.2)
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                      Package                                     PosX       PosY       Rot  Side
+BZ1       Buzzer                   Buzzer_TDK_PS1240P02BT_D12.2mm_H6.5mm    10.0708    22.2000  180.0000  top
+C1        100nF                    C_0805_2012Metric                        26.1500    13.5000  -90.0000  top
+C2        10nF                     C_0603_1608Metric                        34.2000    15.9000  180.0000  top
+C3        10nF                     C_0603_1608Metric                        37.3000    16.4000  180.0000  top
+C4        104                      C_0805_2012Metric                        38.8200     8.3000  -90.0000  top
+C5        10uF                     C_1206_3216Metric                        44.2000     6.8000  -90.0000  top
+C6        10uF                     C_1206_3216Metric                        40.6200     1.8700  180.0000  top
+C7        104                      C_0805_2012Metric                        44.2600     2.6600   90.0000  top
+C8        10uF                     C_1206_3216Metric                        33.3000     7.2500  180.0000  top
+C9        104                      C_0805_2012Metric                        36.7000     6.9000   90.0000  top
+C10       10uF                     C_1206_3216Metric                        34.5800    11.0600  -90.0000  top
+C11       104                      C_0805_2012Metric                        36.7900    10.4900  -90.0000  top
+C12       10uF                     C_1206_3216Metric                        16.6000    13.2000    0.0000  top
+C13       10uF                     C_1206_3216Metric                        16.6000    10.6500    0.0000  top
+D1        1N4148WT                 D_SOD-523                                26.5700     2.1300   90.0000  top
+D2        LED                      LED_0603_1608Metric                      57.7000    11.7000  180.0000  top
+D3        LED                      LED_0603_1608Metric                      57.7000    10.0600  180.0000  top
+D4        1N4148WT                 D_SOD-523                                28.1100     5.2100  -90.0000  top
+D5        1N4148WT                 D_SOD-523                                26.6000     5.2000   90.0000  top
+D6        LED                      LED_0603_1608Metric                      57.7000    13.3500  180.0000  top
+J1        USB_C_Receptacle_USB2.0  USB_C_Receptacle_HRO_TYPE-C-31-M-12      50.8000     4.6400    0.0000  top
+J3        OUTPUT                   Jack_3.5mm_PJ320D_Horizontal              6.9300     6.7000    0.0000  top
+J4        Conn_01x02_Female        SIP-2                                    57.5600     6.7700   90.0000  top
+L1        100mH                    L_0805_2012Metric                        28.0500    13.8500   90.0000  top
+Q1        AO3400A                  SOT-23                                   30.8200     2.5700    0.0000  top
+Q2        AO3401A                  SOT-23                                   36.1900     3.1600   90.0000  top
+Q3        AO3400A                  SOT-23                                   16.2000    19.6000  180.0000  top
+Q4        AO3401A                  SOT-23                                   15.5000    27.0000   90.0000  top
+R1        1K                       R_0603_1608Metric                        22.6000    13.7000   90.0000  top
+R2        10K                      R_0603_1608Metric                        24.2500    13.7000  -90.0000  top
+R3        10K                      R_0603_1608Metric                        34.2300    14.2900  180.0000  top
+R4        10K                      R_0603_1608Metric                        36.8500    14.0000  -90.0000  top
+R5        2K                       R_0603_1608Metric                        41.5000     7.6000    0.0000  top
+R6        20K                      R_0603_1608Metric                        28.1000     2.3500  -90.0000  top
+R7        20K                      R_0603_1608Metric                        33.5500     2.7200  -90.0000  top
+R8        20K                      R_0603_1608Metric                        32.7900     5.0800  180.0000  top
+R9        20K                      R_0603_1608Metric                        30.1200     6.9200   90.0000  top
+R10       2K                       R_0603_1608Metric                        41.5000     9.3000  180.0000  top
+R11       100                      R_0603_1608Metric                        46.1000    12.7000    0.0000  top
+R12       100                      R_0603_1608Metric                        46.1000    11.1000    0.0000  top
+R13       1K                       R_0603_1608Metric                        45.2000    15.3000  -90.0000  top
+R14       510                      R_0603_1608Metric                        39.7000    14.7000    0.0000  top
+R16       10K                      R_0603_1608Metric                        15.8000    15.4000    0.0000  top
+R17       10K                      R_0603_1608Metric                        15.8000    17.0000    0.0000  top
+R18       10K                      R_0603_1608Metric                        37.4000    24.7000    0.0000  top
+R19       10K                      R_0603_1608Metric                        40.6000    27.5000  -90.0000  top
+R20       10K                      R_0603_1608Metric                        15.7000    24.1000    0.0000  top
+R21       10K                      R_0603_1608Metric                        15.8000    22.4000  180.0000  top
+R22       1K                       R_0603_1608Metric                         6.8500    13.5750  -90.0000  top
+R23       1K                       R_0603_1608Metric                        10.9500    13.6000  -90.0000  top
+R24       510                      R_0603_1608Metric                        58.8500    15.8000  -90.0000  top
+SW1       RotaryEncoder_Switch     EC11                                     52.2000    20.8500    0.0000  top
+U1        STM32F030F4Px            TSSOP-20_4.4x6.5mm_P0.65mm               25.3500    19.5500   90.0000  top
+U2        OLED_12864               OLED12864                                16.0950    28.9050    0.0000  top
+U3        MCP73831-2-OT            SOT-23-5                                 40.6000     4.8000    0.0000  top
+U4        CH340E                   MSOP-10_3x3mm_P0.5mm                     41.0000    12.0000  180.0000  top
+U5        LP5907MFX-3.3            SOT-23-5                                 31.3200    10.4600    0.0000  top
+U6        24AA02-OT                SOT-23-5                                 37.7000    27.3000    0.0000  top
+## End
