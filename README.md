@@ -26,6 +26,6 @@
 
 
   [1]: https://github.com/wuwenfengmi1998/Morse_code_trainer
-  [2]: https://git.lmve.net/summary/~kevin%2FMorse_code_trainer.git
+  [2]: https://git.lmve.net/kevin/morse_code_trainer
 
 
