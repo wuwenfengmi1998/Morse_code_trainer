@@ -40,7 +40,7 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-ADC_HandleTypeDef hadc;
+ ADC_HandleTypeDef hadc;
 
 I2C_HandleTypeDef hi2c1;
 
@@ -141,6 +141,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+
   /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -179,6 +180,7 @@ static void MX_ADC_Init(void)
   /* USER CODE BEGIN ADC_Init 1 */
 
   /* USER CODE END ADC_Init 1 */
+
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion)
   */
   hadc.Instance = ADC1;
@@ -199,6 +201,7 @@ static void MX_ADC_Init(void)
   {
     Error_Handler();
   }
+
   /** Configure for the selected ADC regular channel to be converted.
   */
   sConfig.Channel = ADC_CHANNEL_0;
@@ -242,12 +245,14 @@ static void MX_I2C1_Init(void)
   {
     Error_Handler();
   }
+
   /** Configure Analogue filter
   */
   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
   {
     Error_Handler();
   }
+
   /** Configure Digital filter
   */
   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
@@ -356,7 +361,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, buzzer_mute_Pin|PWR_EN_Pin|RUN_LED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(buzzer_mute_GPIO_Port, buzzer_mute_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : tack_A_Pin tack_B_Pin */
   GPIO_InitStruct.Pin = tack_A_Pin|tack_B_Pin;
@@ -370,12 +375,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(charge_det_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : buzzer_mute_Pin PWR_EN_Pin RUN_LED_Pin */
-  GPIO_InitStruct.Pin = buzzer_mute_Pin|PWR_EN_Pin|RUN_LED_Pin;
+  /*Configure GPIO pin : buzzer_mute_Pin */
+  GPIO_InitStruct.Pin = buzzer_mute_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(buzzer_mute_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SW_A_Pin SW_B_Pin */
   GPIO_InitStruct.Pin = SW_A_Pin|SW_B_Pin;
@@ -426,5 +431,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
