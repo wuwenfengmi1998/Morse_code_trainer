@@ -210,7 +210,7 @@ void OLED_ShowStr(unsigned char x,unsigned char y,char *str)
 	{
 		if(x>=X_WIDTH)
 		{
-			y++;
+			y+=2;
 			if(y>=Y_WIDTH_)
 			{
 				y=0;

@@ -14,7 +14,8 @@ void mymain()
 	OLED_Init();
 	OLED_Init_Display_Buffer(0);
 
-	OLED_ShowStr(0,0,"123");
+	OLED_ShowStr(0,0,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
 
 	while(1)
 	{
