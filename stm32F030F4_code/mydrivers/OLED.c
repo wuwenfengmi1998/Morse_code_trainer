@@ -125,7 +125,7 @@ void OLED_WrDat(unsigned char IIC_Data)
 
 void OLED_Set_Pos(unsigned char x, unsigned char y)
 {
-  OLED_WrCmd(    0xb0  +   y   );
+  OLED_WrCmd(    0xb0  +   7-y   );
   OLED_WrCmd(((x&0xf0)>>4)|0x10);
   OLED_WrCmd( (x&0x0f)    |0x00);
 }
@@ -170,11 +170,11 @@ void OLED_Init(void)
 	OLED_WrCmd(0x20); //设置内存地址模式
 	OLED_WrCmd(0x02); //[1:0],00，列地址模式;01，行地址模式;10,页地址模式;默认10;
 	OLED_WrCmd(0xA1); //段重定义设置,bit0:0,0->0;1,0->127;
-	//OLED_WrCmd(0xC0); //设置COM扫描方向;bit3:0,普通模式;1,重定义模式 COM[N-1]->COM0;N:驱动路数
+	OLED_WrCmd(0xC0); //设置COM扫描方向;bit3:0,普通模式;1,重定义模式 COM[N-1]->COM0;N:驱动路数
 	//OLED_WrCmd(0xDA); //设置COM硬件引脚配置
 	//OLED_WrCmd(0x12); //[5:4]配置
 	//显示方向设置
-	OLED_WrCmd(0xc8);//OLED_WrCmd(0xa0);
+	//OLED_WrCmd(0xc8);//OLED_WrCmd(0xa0);
 	 //行扫描顺序：从上到下
 	 //列扫描顺序：从左到右
 	OLED_WrCmd(0xD9); //设置预充电周期
@@ -195,13 +195,36 @@ void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr)
 	OLED_Set_Pos(x,y);
 	for(char a=0;a<8;a++)
 	{
-		OLED_WrDat(asc2_1608[chr-' '][(a*2)+1]);
+		OLED_WrDat(asc2_1608[chr-' '][(a*2)]);
 	}
 	OLED_Set_Pos(x,y+1);
 	for(char a=0;a<8;a++)
 	{
-		OLED_WrDat(asc2_1608[chr-' '][(a*2)]);
+		OLED_WrDat(asc2_1608[chr-' '][(a*2)+1]);
 	}
+}
+
+void OLED_ShowStr(unsigned char x,unsigned char y,char *str)
+{
+	while(*str!='\0')
+	{
+		if(x>=X_WIDTH)
+		{
+			y++;
+			if(y>=Y_WIDTH_)
+			{
+				y=0;
+			}
+			x=0;
+		}
+
+		OLED_ShowChar(x,y,*str);
+
+		str++;
+		x+=8;
+
+	}
+
 }
 
 

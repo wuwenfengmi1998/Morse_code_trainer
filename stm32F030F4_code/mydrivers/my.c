@@ -14,7 +14,7 @@ void mymain()
 	OLED_Init();
 	OLED_Init_Display_Buffer(0);
 
-	OLED_ShowChar(0,0,48);
+	OLED_ShowStr(0,0,"123");
 
 	while(1)
 	{

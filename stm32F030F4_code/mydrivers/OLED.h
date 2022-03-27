@@ -20,6 +20,6 @@
 void OLED_Init(void);
 void OLED_Init_Display_Buffer(char a);
 void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr);
-
+void OLED_ShowStr(unsigned char x,unsigned char y,char *str);
 
 #endif /* OLED_H_ */
