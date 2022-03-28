@@ -22,10 +22,10 @@ uint32_t morse_time_out=0;
 uint16_t morse_temp;
 
 #define morse_input_buff_num 64
-char morse_input_buff[morse_input_buff_num+1];
-int morse_input_flag=0;
-int morse_char_flag=0;
-int morse_x,morse_y;
+
+char morse_input_flag=0;
+char morse_char_flag=0;
+char morse_x,morse_y;
 char morse_flah=0;
 uint8_t morse_letter_temp=0;
 uint8_t morse_letter_flag=0;
@@ -165,6 +165,7 @@ char getmorsecode(uint8_t len,uint8_t code)
 void mymain()
 {
 
+	char str[16];
 	char get_char_temp;
 
 	OLED_Init();
@@ -194,18 +195,31 @@ void mymain()
 				}else if(morse_temp>morse_t1)
 				{
 					//-
-					morse_input_buff[morse_input_flag]='-';
+
+					OLED_ShowChar(morse_x,morse_y,'-');
 					morse_letter_temp|=(0x80>>morse_letter_flag);
 				}else
 				{
 					//.
-					morse_input_buff[morse_input_flag]='.';
+
+					OLED_ShowChar(morse_x,morse_y,'.');
 
 				}
-				morse_input_flag++;
 				morse_letter_flag++;
-				//if(morse_input_flag>=morse_char_flag+8){morse_input_flag=morse_char_flag;morse_letter_flag=0;}
+				morse_x+=8;
+				if(morse_x>=X_WIDTH)
+				{
+					morse_x=0;
+					morse_y+=2;
+					if(morse_y>=Y_WIDTH_)
+					{
+						morse_y=0;
+					}
+				}
+
 				//play_ones(0,0);
+
+				morse_input_flag=1;
 			}
 
 
@@ -213,20 +227,19 @@ void mymain()
 			morse_time_out=HAL_GetTick();
 		}
 
-		if(push_key==1)
+		if(push_key==1&morse_input_flag==1)
 		{
 			//Get cursor on the screen
 			if((HAL_GetTick()-morse_time_out)>morse_t1)
 			{
-				if((morse_input_flag-morse_char_flag)>0)
-				{
 
-					get_char_temp=getmorsecode(morse_letter_flag,morse_letter_temp);
-					morse_letter_flag=0;
-					morse_letter_temp=0;
-					OLED_ShowStr(0,0,morse_input_buff);
-				}
+				get_char_temp=getmorsecode(morse_letter_flag,morse_letter_temp);
+				morse_letter_flag=0;
+				morse_letter_temp=0;
+				OLED_ShowChar(0,6,get_char_temp);
+				morse_input_flag=0;
 			}
+
 
 		}
 	}
