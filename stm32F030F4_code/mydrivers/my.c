@@ -177,7 +177,7 @@ void mymain()
 	while(1)
 	{
 
-		push_key=SW_C;
+		push_key=KEY1;
 		if(push_key!=last_key)
 		{
 
@@ -214,6 +214,8 @@ void mymain()
 					if(morse_y>=Y_WIDTH_)
 					{
 						morse_y=0;
+
+						OLED_Init_Display_Buffer(0);
 					}
 				}
 
