@@ -10,7 +10,7 @@
 
 #include "main.h"
 #include "OLED.h"
-
+#include "buzzer.h"
 #define KEY0 HAL_GPIO_ReadPin(tack_A_GPIO_Port, tack_A_Pin)
 #define KEY1 HAL_GPIO_ReadPin(tack_B_GPIO_Port, tack_B_Pin)
 #define SW_C HAL_GPIO_ReadPin(SW_C_GPIO_Port, SW_C_Pin)

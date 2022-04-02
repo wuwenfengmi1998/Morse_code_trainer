@@ -173,8 +173,8 @@ void mymain()
 	OLED_Init_Display_Buffer(0);
 
 	//OLED_ShowStr(0,0,"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-
-
+	//HAL_TIM_PWM_Start(&htim14,TIM_CHANNEL_1);//启动n通道的pwm
+	//play_ones(1000,50);
 	while(1)
 	{
 
