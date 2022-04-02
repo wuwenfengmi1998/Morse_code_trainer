@@ -8,6 +8,7 @@
 
 #include "my.h"
 
+#define morse_t0 50
 #define morse_t1 150
 #define morse_t2 (morse_t1*3)
 #define morse_hz 100
@@ -25,7 +26,7 @@ uint16_t morse_temp;
 
 char morse_input_flag=0;
 char morse_char_flag=0;
-char morse_x,morse_y;
+char morse_x=0,morse_y=0,morse_x_=0,morse_y_=0;
 char morse_flah=0;
 uint8_t morse_letter_temp=0;
 uint8_t morse_letter_flag=0;
@@ -159,7 +160,7 @@ char getmorsecode(uint8_t len,uint8_t code)
 		}
 
 	}
-	return 0;
+	return ' ';
 }
 
 void mymain()
@@ -189,35 +190,52 @@ void mymain()
 			}else
 			{
 				morse_temp=HAL_GetTick()-morse_t;
-				if(morse_temp>morse_t2)
+				if(morse_temp<morse_t0)
 				{
 					//time out error
+
+
+
 				}else if(morse_temp>morse_t1)
 				{
 					//-
 
 					OLED_ShowChar(morse_x,morse_y,'-');
 					morse_letter_temp|=(0x80>>morse_letter_flag);
+					morse_letter_flag++;
+					morse_x+=8;
+					if(morse_x>=X_WIDTH)
+					{
+						morse_x=0;
+						morse_y+=2;
+						if(morse_y>=Y_WIDTH_)
+						{
+							morse_y=0;
+
+							OLED_Init_Display_Buffer(0);
+						}
+					}
 				}else
 				{
 					//.
 
 					OLED_ShowChar(morse_x,morse_y,'.');
-
-				}
-				morse_letter_flag++;
-				morse_x+=8;
-				if(morse_x>=X_WIDTH)
-				{
-					morse_x=0;
-					morse_y+=2;
-					if(morse_y>=Y_WIDTH_)
+					morse_letter_flag++;
+					morse_x+=8;
+					if(morse_x>=X_WIDTH)
 					{
-						morse_y=0;
+						morse_x=0;
+						morse_y+=2;
+						if(morse_y>=Y_WIDTH_)
+						{
+							morse_y=0;
 
-						OLED_Init_Display_Buffer(0);
+							OLED_Init_Display_Buffer(0);
+						}
 					}
+
 				}
+
 
 				//play_ones(0,0);
 
@@ -236,9 +254,33 @@ void mymain()
 			{
 
 				get_char_temp=getmorsecode(morse_letter_flag,morse_letter_temp);
-				morse_letter_flag=0;
 				morse_letter_temp=0;
-				OLED_ShowChar(0,6,get_char_temp);
+
+				while(morse_letter_flag!=0)
+				{
+					if(morse_x==0)
+					{
+						morse_x=X_WIDTH;
+						morse_y-=2;
+					}
+					morse_x-=8;
+					OLED_ShowChar(morse_x,morse_y,' ');
+					morse_letter_flag--;
+				}
+				OLED_ShowChar(morse_x,morse_y,get_char_temp);
+				morse_x+=8;
+				if(morse_x>=X_WIDTH)
+				{
+					morse_x=0;
+					morse_y+=2;
+					if(morse_y>=Y_WIDTH_)
+					{
+						morse_y=0;
+
+						OLED_Init_Display_Buffer(0);
+					}
+				}
+
 				morse_input_flag=0;
 			}
 
