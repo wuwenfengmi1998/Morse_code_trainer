@@ -3,11 +3,11 @@
 <title>Static Call Graph - [f103c8t6_KEIL\f103c8t6_KEIL.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image f103c8t6_KEIL\f103c8t6_KEIL.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Apr 15 17:38:20 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Apr 15 22:54:34 2022
 <BR><P>
 <H3>Maximum Stack Usage =        192 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-__rt_entry_main &rArr; main &rArr; mymain &rArr; OLED_Cache_to_hardware &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+__rt_entry_main &rArr; main &rArr; mymain &rArr; OLED_Pix &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 <P>
 <H3>
 Functions with no stack information
@@ -202,7 +202,7 @@ Global Symbols
 
 <P><STRONG><a name="[43]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
 <BR><BR>[Stack]<UL><LI>Max Depth = 192 + Unknown Stack Size
-<LI>Call Chain = __rt_entry_main &rArr; main &rArr; mymain &rArr; OLED_Cache_to_hardware &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<LI>Call Chain = __rt_entry_main &rArr; main &rArr; mymain &rArr; OLED_Pix &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -574,8 +574,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_I2C_Mem_Write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
 </UL>
 
 <P><STRONG><a name="[6]"></a>MemManage_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.MemManage_Handler))
@@ -592,53 +592,53 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
-<P><STRONG><a name="[66]"></a>OLED_Cache_to_hardware</STRONG> (Thumb, 48 bytes, Stack size 24 bytes, oled.o(i.OLED_Cache_to_hardware))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = OLED_Cache_to_hardware &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
-</UL>
-<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Set_Pos
-</UL>
-<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymain
-</UL>
-
-<P><STRONG><a name="[69]"></a>OLED_Init</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, oled.o(i.OLED_Init))
+<P><STRONG><a name="[66]"></a>OLED_Init</STRONG> (Thumb, 138 bytes, Stack size 8 bytes, oled.o(i.OLED_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = OLED_Init &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
+<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymain
 </UL>
 
-<P><STRONG><a name="[6b]"></a>OLED_Init_Display_Buffer</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, oled.o(i.OLED_Init_Display_Buffer), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Set_Pos
+<P><STRONG><a name="[68]"></a>OLED_Init_Display_Buffer</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, oled.o(i.OLED_Init_Display_Buffer), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Set_Pos
 </UL>
 
-<P><STRONG><a name="[67]"></a>OLED_Set_Pos</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, oled.o(i.OLED_Set_Pos))
+<P><STRONG><a name="[6b]"></a>OLED_Pix</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, oled.o(i.OLED_Pix))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = OLED_Pix &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Set_Pos
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymain
+</UL>
+
+<P><STRONG><a name="[69]"></a>OLED_Set_Pos</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, oled.o(i.OLED_Set_Pos))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
+<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init_Display_Buffer
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Cache_to_hardware
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init_Display_Buffer
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Pix
 </UL>
 
-<P><STRONG><a name="[6a]"></a>OLED_WrCmd</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, oled.o(i.OLED_WrCmd))
+<P><STRONG><a name="[67]"></a>OLED_WrCmd</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, oled.o(i.OLED_WrCmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SAND_DATE
 </UL>
-<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Set_Pos
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Set_Pos
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 </UL>
 
-<P><STRONG><a name="[68]"></a>OLED_WrDat</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, oled.o(i.OLED_WrDat))
+<P><STRONG><a name="[6a]"></a>OLED_WrDat</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, oled.o(i.OLED_WrDat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = OLED_WrDat &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IIC_SAND_DATE
 </UL>
-<BR>[Called By]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init_Display_Buffer
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Cache_to_hardware
+<BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init_Display_Buffer
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Pix
 </UL>
 
 <P><STRONG><a name="[b]"></a>PendSV_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.PendSV_Handler))
@@ -673,7 +673,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xb.o(RESET)
 </UL>
 <P><STRONG><a name="[44]"></a>main</STRONG> (Thumb, 58 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = main &rArr; mymain &rArr; OLED_Cache_to_hardware &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = main &rArr; mymain &rArr; OLED_Pix &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mymain
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
@@ -684,13 +684,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[6f]"></a>mymain</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, mymain.o(i.mymain))
-<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = mymain &rArr; OLED_Cache_to_hardware &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
+<P><STRONG><a name="[6f]"></a>mymain</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, mymain.o(i.mymain))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = mymain &rArr; OLED_Pix &rArr; OLED_Set_Pos &rArr; OLED_WrCmd &rArr; IIC_SAND_DATE &rArr; HAL_I2C_Mem_Write &rArr; I2C_RequestMemoryWrite &rArr; I2C_WaitOnMasterAddressFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Cache_to_hardware
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Pix
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>

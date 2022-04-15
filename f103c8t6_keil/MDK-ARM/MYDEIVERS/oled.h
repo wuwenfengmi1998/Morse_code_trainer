@@ -21,6 +21,9 @@ void OLED_Init(void);
 
 void OLED_Cache_to_hardware();
 
+void OLED_set_dot(unsigned char x,unsigned char y,unsigned char dot_type);
+void OLED_Pix(unsigned char x,unsigned char y,unsigned char w,unsigned char h,const char *p);
+
 void OLED_ShowStr(unsigned char x,unsigned char y,char *str);
 
 #endif /* OLED_H_ */
