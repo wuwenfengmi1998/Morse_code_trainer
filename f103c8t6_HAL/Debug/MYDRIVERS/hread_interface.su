@@ -1,0 +1,2 @@
+hread_interface.c:10:6:IIC_SAND_DATE	40	static
+hread_interface.c:15:6:IIC_READ_DATE	40	static

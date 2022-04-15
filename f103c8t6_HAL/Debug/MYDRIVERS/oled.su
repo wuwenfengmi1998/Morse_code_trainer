@@ -1,0 +1,8 @@
+oled.c:113:6:OLED_WrCmd	24	static
+oled.c:120:6:OLED_WrDat	24	static
+oled.c:127:6:OLED_Set_Pos	16	static
+oled.c:134:6:OLED_Init_Display_Buffer	24	static
+oled.c:151:6:OLED_Setting_luminance	16	static
+oled.c:158:6:OLED_Init	8	static
+oled.c:194:6:OLED_ShowChar	24	static
+oled.c:208:6:OLED_ShowStr	16	static
