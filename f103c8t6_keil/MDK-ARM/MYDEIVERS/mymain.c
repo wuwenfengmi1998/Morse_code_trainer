@@ -12,11 +12,19 @@ void mymain()
 uint32_t run_tick=0;
 	
 	OLED_Init();
-	OLED_ShowStr(0,0,"test");
+	
+	
+	
 	while(1)
 	{
 
 		
-
+		OLED_Cache_to_hardware();
+		if(HAL_GetTick()>run_tick)
+		{
+				run_tick+=500;
+				RUNLED_TICK();
+		}
+	
 	}
 }

@@ -10,6 +10,7 @@
 
 #include "main.h"
 #include "hread_interface.h"
+
 #define OLED_ADDRESS 0x78
 #define PI 3.141592654
 #define X_WIDTH 128
@@ -17,6 +18,9 @@
 #define Y_WIDTH_ 8
 
 void OLED_Init(void);
+
+void OLED_Cache_to_hardware();
+
 void OLED_ShowStr(unsigned char x,unsigned char y,char *str);
 
 #endif /* OLED_H_ */
