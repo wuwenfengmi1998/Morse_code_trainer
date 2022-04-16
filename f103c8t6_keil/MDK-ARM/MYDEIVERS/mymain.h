@@ -10,6 +10,14 @@
 
 #include "main.h"
 #include "oled.h"
+#include "buzzer.h"
+
+struct morsecode
+{
+	uint8_t len;
+	uint8_t code;
+	char letter;
+};
 
 void mymain();
 

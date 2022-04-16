@@ -27,5 +27,8 @@ f103c8t6_keil\mymain.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.
 f103c8t6_keil\mymain.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 f103c8t6_keil\mymain.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 f103c8t6_keil\mymain.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+f103c8t6_keil\mymain.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
+f103c8t6_keil\mymain.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 f103c8t6_keil\mymain.o: MYDEIVERS\oled.h
 f103c8t6_keil\mymain.o: MYDEIVERS\hread_interface.h
+f103c8t6_keil\mymain.o: MYDEIVERS\buzzer.h

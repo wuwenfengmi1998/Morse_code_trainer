@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 C:\Users\wuwen\Desktop\morse_code_trainer\f103c8t6_keil\MDK-ARM\f103c8t6_KEIL.uvprojx
-Project File Date:  04/15/2022
+Project File Date:  04/17/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
@@ -30,17 +30,19 @@ Build target 'f103c8t6_KEIL'
 compiling mymain.c...
 MYDEIVERS\oled.h(22): warning:  #1295-D: Deprecated declaration OLED_Cache_to_hardware - give arg types
   void OLED_Cache_to_hardware();
-MYDEIVERS\mymain.h(14): warning:  #1295-D: Deprecated declaration mymain - give arg types
+MYDEIVERS\buzzer.h(16): warning:  #1295-D: Deprecated declaration buzzer_play_server - give arg types
+  char buzzer_play_server();
+MYDEIVERS\mymain.h(22): warning:  #1295-D: Deprecated declaration mymain - give arg types
   void mymain();
-MYDEIVERS\mymain.c(43): warning:  #223-D: function "sprintf" declared implicitly
+MYDEIVERS\mymain.c(190): warning:  #188-D: enumerated type mixed with another type
+  	MUTE(0);
+MYDEIVERS\mymain.c(275): warning:  #223-D: function "sprintf" declared implicitly
   		sprintf(str,"FPS:%d",fps);
-MYDEIVERS\mymain.c(45): warning:  #223-D: function "rand" declared implicitly
-  		sprintf(str,"RAND:%d",rand());
-MYDEIVERS\mymain.c: 4 warnings, 0 errors
+MYDEIVERS\mymain.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=5908 RO-data=3864 RW-data=16 ZI-data=3096  
+Program Size: Code=9984 RO-data=3828 RW-data=52 ZI-data=3076  
 FromELF: creating hex file...
-"f103c8t6_KEIL\f103c8t6_KEIL.axf" - 0 Error(s), 4 Warning(s).
+"f103c8t6_KEIL\f103c8t6_KEIL.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 

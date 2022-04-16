@@ -135,10 +135,12 @@ void OLED_Cache_to_hardware()
 		{
 			if(a&OLED_speedup[x])
 			{
-				OLED_speedup[x]&=~a;
-				if(b==0){b=1;OLED_Set_Pos(x,y);}
 				
+				if(b==0){b=1;OLED_Set_Pos(x,y);}			
 				OLED_WrDat(OLED_buff[y][x]);
+				
+				OLED_speedup[x]&=~a;
+				//OLED_buff[y][x]=0xff;
 			}else
 			{b=0;}
 			
@@ -874,6 +876,7 @@ type=0 清空区域
 		=2 正片叠底
 		=3 正片清空
 		=4 负片
+		=5 正片负片
 */
 void OLED_Pix(unsigned char x,unsigned char y,unsigned char w,unsigned char h,const char *p,unsigned char type)
 {
@@ -903,6 +906,9 @@ void OLED_Pix(unsigned char x,unsigned char y,unsigned char w,unsigned char h,co
 						break;		
 					case 4:
 						OLED_set_dot(w1+x,h1+y,0);
+						break;	
+					case 5:
+						OLED_set_dot(w1+x,h1+y,2);
 						break;						
 				}
 				
@@ -971,12 +977,26 @@ void OLED_Ascii(unsigned char x,unsigned char y,unsigned char size,char chr,unsi
 
 void OLED_Str(unsigned char x,unsigned char y,unsigned char size,char *str,unsigned char type)
 {
+	unsigned char size2;
+	switch(size)
+	{
+		case 8:
+			size2=6;
+		break;
+		case 12:
+			size2=7;
+		break;
+		case 16:
+			size2=8;
+		break;
+	}	
+	
 	while(*str!='\0')
 	{
-		if(x>=X_WIDTH)
+		if(x+size2>=X_WIDTH)
 		{
 			y+=size;
-			if(y>=Y_WIDTH_)
+			if(y>=Y_WIDTH)
 			{
 				y=0;
 			}
@@ -987,18 +1007,7 @@ void OLED_Str(unsigned char x,unsigned char y,unsigned char size,char *str,unsig
 
 		str++;
 		
-		switch(size)
-		{
-			case 8:
-				x+=6;
-			break;
-			case 12:
-				x+=7;
-			break;
-			case 16:
-				x+=8;
-			break;
-		}
+		x+=size2;
 		
 		
 
