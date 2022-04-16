@@ -25,23 +25,33 @@ const char testbmp[]=
 
 void mymain()
 {
-uint32_t run_tick=0;
+	uint32_t run_tick=0;
+	char str[16];
+	uint16_t fps=0,fps_=0;
 	
 	OLED_Init();
 	
 
-	OLED_Pix(0,0,36,30,testbmp,1);
-	OLED_Pix(50,0,36,30,testbmp,2);
-	OLED_Pix(0,30,36,30,testbmp,4);
+	
 	while(1)
 	{
-
+		fps_++;
+		OLED_Pix(0,0,36,30,testbmp,1);
+		OLED_Str(30,30,16,"ABCD",1);
+		OLED_Str(30,30+16,12,"ABCD",1);
+		OLED_Str(30,0,8,"ABCD",1);
+		sprintf(str,"FPS:%d",fps);
+		OLED_Str(64,0,8,str,1);
+		sprintf(str,"RAND:%d",rand());
+		OLED_Str(30,8,8,str,1);
 		
 		OLED_Cache_to_hardware();
 		if(HAL_GetTick()>run_tick)
 		{
-				run_tick+=500;
-				RUNLED_TICK();
+			run_tick+=1000;
+			RUNLED_TICK();
+			fps=fps_;
+			fps_=0;
 		}
 	
 	}
