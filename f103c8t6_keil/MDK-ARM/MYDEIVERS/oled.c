@@ -249,16 +249,18 @@ void OLED_set_dot(unsigned char x,unsigned char y,unsigned char dot_type)
 		return ;
 	}
 	uint8_t y1=y/8;
+	uint8_t y2=y%8;
+	uint8_t y3=(0x80>>y2);
 	switch(dot_type)
 	{
 		case 0:
-			OLED_buff[y1][x] &= ~(1<<(y%8));
+			OLED_buff[y1][x] &= ~y3;
 			break;
 		case 1:
-			OLED_buff[y1][x] |= (1<<(y%8));
+			OLED_buff[y1][x] |= y3;
 			break;
 		case 2:
-			OLED_buff[y1][x] ^= (1<<(y%8));
+			OLED_buff[y1][x] ^= y3;
 			break;
 		case 3:break;
 	}
@@ -266,15 +268,73 @@ void OLED_set_dot(unsigned char x,unsigned char y,unsigned char dot_type)
 }
 /*
 绘图函数
-
+数据格式 从左到右，从上到下，横向8点右高位
+type=0 清空区域
+		=1 区域图层
+		=2 正片叠底
+		=3 正片清空
+		=4 负片
 */
-void OLED_Pix(unsigned char x,unsigned char y,unsigned char w,unsigned char h,const char *p)
+void OLED_Pix(unsigned char x,unsigned char y,unsigned char w,unsigned char h,const char *p,unsigned char type)
 {
-	OLED_Set_Pos(0,0);
-	for(int a=0;a<36;a++)
+	
+	unsigned char b=0;
+	unsigned int  c=0;
+	
+	for(uint8_t h1=0;h1<h;h1++)
 	{
-		OLED_WrDat(p[a]);
+		for(uint8_t w1=0;w1<w;w1++)
+		{
+			if(p[c]&0x80>>b)
+			{
+				switch(type)
+				{
+					case 0:
+						OLED_set_dot(w1+x,h1+y,0);
+						break;
+					case 1:
+						OLED_set_dot(w1+x,h1+y,1);
+						break;
+					case 2:
+						OLED_set_dot(w1+x,h1+y,1);
+						break;		
+					case 3:
+						OLED_set_dot(w1+x,h1+y,0);
+						break;		
+					case 4:
+						OLED_set_dot(w1+x,h1+y,0);
+						break;						
+				}
+				
+			}else
+			{
+				switch(type)
+				{
+					case 0:
+						OLED_set_dot(w1+x,h1+y,0);
+						break;
+					case 1:
+						OLED_set_dot(w1+x,h1+y,0);
+						break;
+					case 2:
+
+						break;	
+					case 4:
+						OLED_set_dot(w1+x,h1+y,1);
+						break;
+				}
+			}
+			b++;
+			if(b==8)
+			{
+				b=0;c++;
+			}
+		}
+		b=0;c++;
 	}
+		
+	
+
 }
 void OLED_ShowChar(unsigned char x,unsigned char y,unsigned char chr)
 {
