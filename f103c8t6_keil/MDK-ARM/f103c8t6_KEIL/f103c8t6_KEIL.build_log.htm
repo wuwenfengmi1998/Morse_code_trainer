@@ -34,15 +34,17 @@ MYDEIVERS\buzzer.h(16): warning:  #1295-D: Deprecated declaration buzzer_play_se
   char buzzer_play_server();
 MYDEIVERS\mymain.h(22): warning:  #1295-D: Deprecated declaration mymain - give arg types
   void mymain();
-MYDEIVERS\mymain.c(190): warning:  #188-D: enumerated type mixed with another type
+MYDEIVERS\mymain.c(178): warning:  #188-D: enumerated type mixed with another type
   	MUTE(0);
-MYDEIVERS\mymain.c(275): warning:  #223-D: function "sprintf" declared implicitly
+MYDEIVERS\mymain.c(187): warning:  #223-D: function "sprintf" declared implicitly
   		sprintf(str,"FPS:%d",fps);
-MYDEIVERS\mymain.c: 5 warnings, 0 errors
+MYDEIVERS\mymain.c(183): warning:  #177-D: variable "get_char_temp"  was declared but never referenced
+  		char get_char_temp;
+MYDEIVERS\mymain.c: 6 warnings, 0 errors
 linking...
-Program Size: Code=9984 RO-data=3828 RW-data=52 ZI-data=3076  
+Program Size: Code=9676 RO-data=3712 RW-data=28 ZI-data=2940  
 FromELF: creating hex file...
-"f103c8t6_KEIL\f103c8t6_KEIL.axf" - 0 Error(s), 5 Warning(s).
+"f103c8t6_KEIL\f103c8t6_KEIL.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -66,7 +68,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.5.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

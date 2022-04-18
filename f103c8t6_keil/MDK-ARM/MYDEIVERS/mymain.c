@@ -15,19 +15,7 @@
 #define morse_play_t2 (morse_play_t1*3)
 #define morse_play_hz 100
 
-char push_key=0,last_key=1;
-uint32_t morse_t=0;
-uint32_t morse_time_out=0;
-uint16_t morse_temp;
 
-#define morse_input_buff_num 128
-char morse_input_buff[morse_input_buff_num+1];
-int morse_input_flag=0;
-int morse_char_flag=0;
-int morse_x,morse_y;
-char morse_flah=0;
-uint8_t morse_letter_temp=0;
-uint8_t morse_letter_flag=0;
 
 #define morsecodenum 38
 const struct morsecode morsecodes[morsecodenum]=
@@ -193,88 +181,13 @@ void mymain()
 	{
 		
 		char get_char_temp;
-		push_key=tack_b();
-		
-
-	if(push_key!=last_key)
-	{
-
-		if(push_key==0)
-		{
-			morse_t=HAL_GetTick();
-			play_ones(morse_hz,50);
-		}else
-		{
-			morse_temp=HAL_GetTick()-morse_t;
-			if(morse_temp>morse_t2)
-			{
-				//time out error
-			}else if(morse_temp>morse_t1)
-			{
-				//-
-				morse_input_buff[morse_input_flag]='-';
-				morse_letter_temp|=(0x80>>morse_letter_flag);
-			}else
-			{
-				//.
-				morse_input_buff[morse_input_flag]='.';
-
-			}
-			morse_input_flag++;
-			morse_letter_flag++;
-			//if(morse_input_flag>=morse_char_flag+8){morse_input_flag=morse_char_flag;morse_letter_flag=0;}
-			play_ones(0,0);
-		}
-
-
-		last_key=push_key;
-		morse_time_out=HAL_GetTick();
-	}
-
-	if(push_key==1)
-	{
-		//Get cursor on the screen
-		if((HAL_GetTick()-morse_time_out)>morse_t1)
-		{
-				if((morse_input_flag-morse_char_flag)>0)
-				{
-
-				get_char_temp=getmorsecode(morse_letter_flag,morse_letter_temp);
 			
-				morse_letter_flag=0;
-				morse_letter_temp=0;
-				if(get_char_temp!=0)
-				{
-					morse_input_buff[morse_char_flag]=get_char_temp;
-					morse_flah=1;
-					morse_char_flag+=1;
-				}
-
-				morse_input_flag=morse_char_flag;
-
-
-			}
-		}
-		if((HAL_GetTick()-morse_time_out)>morse_t2)
-		{
-			if(morse_flah==1)
-			{
-				morse_input_buff[morse_char_flag]=' ';
-				morse_char_flag+=1;
-				morse_input_flag=morse_char_flag;
-				morse_flah=0;
-			}
-		}
-	}
-
-	
-		OLED_Str(0,0,8,morse_input_buff,1);
-		
 		
 		fps_++;
 		sprintf(str,"FPS:%d",fps);
 		OLED_Str(0,56,8,str,1);
-		OLED_Cache_to_hardware();
+		
+		OLED_Cache_to_hardware();//刷新屏幕
 		buzzer_play_server();
 		if(HAL_GetTick()>run_tick)
 		{
