@@ -1029,6 +1029,61 @@ void OLED_VL(unsigned char x,unsigned char y,unsigned char size,unsigned char do
 
 }
 
+/*画任意线*/
+void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type)
+{
+
+	int dx,dy;
+	
+	dx=ex-sx;
+	dy=ey-sy;
+	
+	if(dx==0)
+	{
+		if(dy>0)
+		{
+			for(int y=ey;y>sy;y--)
+			{
+				OLED_set_dot(sx,y,dot_type);
+			}
+		}
+		if(dy<0)
+		{
+			for(int y=ey;y<sy;y++)
+			{
+				OLED_set_dot(sx,y,dot_type);
+			}
+		}
+		
+		return ;
+	}
+
+	if(dy==0)
+	{
+		if(dx>0)
+		{
+			for(int x=ex;x>sx;x--)
+			{
+				OLED_set_dot(x,sy,dot_type);
+			}
+		}
+		if(dx<0)
+		{
+			for(int x=ex;x<sx;x++)
+			{
+				OLED_set_dot(x,sy,dot_type);
+			}
+		}
+		
+		return ;
+	}
+	
+	if(dx==0&&dy==0)
+	{
+		//OLED_set_dot(sx,sy,dot_type);
+		return ;
+	}
+}
 
 
 

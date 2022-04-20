@@ -26,4 +26,6 @@ void OLED_Pix(unsigned char x,unsigned char y,unsigned char w,unsigned char h,co
 
 void OLED_Ascii(unsigned char x,unsigned char y,unsigned char size,char chr,unsigned char type);
 void OLED_Str(unsigned char x,unsigned char y,unsigned char size,char *str,unsigned char type);
+
+void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type);
 #endif /* OLED_H_ */

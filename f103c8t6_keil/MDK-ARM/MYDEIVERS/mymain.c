@@ -182,6 +182,13 @@ void mymain()
 		
 		OLED_Str(0,0,16,"hello",1);
 			
+		OLED_AL(10,20,10,21,1);
+		
+		OLED_AL(20,50,20,49,1);
+		
+		OLED_AL(20,50,30,50,1);
+		
+		OLED_AL(50,30,30,30,1);
 		
 		fps_++;
 		sprintf(str,"FPS:%d",fps);
