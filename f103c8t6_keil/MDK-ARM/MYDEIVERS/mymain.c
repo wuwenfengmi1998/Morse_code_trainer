@@ -176,11 +176,11 @@ void mymain()
 	
 	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);//启动n通道的pwm
 	MUTE(0);
-	add_a_note(1000,50,1000);
+	//add_a_note(1000,50,1000);
 	while(1)
 	{
 		
-		char get_char_temp;
+		OLED_Str(0,0,16,"hello",1);
 			
 		
 		fps_++;

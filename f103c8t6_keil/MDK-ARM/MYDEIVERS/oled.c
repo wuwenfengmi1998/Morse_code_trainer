@@ -120,27 +120,25 @@ char OLED_buff[Y_WIDTH_][X_WIDTH];
 /*
 加速缓存
 */
-char OLED_speedup[128];
+char OLED_speedup[Y_WIDTH_][X_WIDTH];
 /*
 将显存发送到硬件
 */
 void OLED_Cache_to_hardware()
 {
-	char a,b=0;
+	char b=0;
 	for(uint8_t y=0;y<Y_WIDTH_;y++)
 	{
 		OLED_Set_Pos(0,y);
-		a=0x80>>y;
 		for(uint8_t x=0;x<X_WIDTH;x++)
 		{
-			if(a&OLED_speedup[x])
+			if(OLED_buff[y][x]!=OLED_speedup[y][x])
 			{
 				
 				if(b==0){b=1;OLED_Set_Pos(x,y);}			
-				OLED_WrDat(OLED_buff[y][x]);
-				
-				OLED_speedup[x]&=~a;
-				//OLED_buff[y][x]=0xff;
+				OLED_WrDat(OLED_buff[y][x]);			
+				OLED_speedup[y][x]=OLED_buff[y][x];
+				OLED_buff[y][x]=0x00;
 			}else
 			{b=0;}
 			
@@ -860,12 +858,11 @@ void OLED_set_dot(unsigned char x,unsigned char y,unsigned char dot_type)
 		case 3:break;
 	}
 	
-	if(temp!=OLED_buff[y1][x])
-	{
-		OLED_buff[y1][x]=temp;
+	
+	OLED_buff[y1][x]=temp;
 		
-		OLED_speedup[x]|=0x80>>y1;
-	}
+		
+	
 	
 }
 /*
@@ -1015,6 +1012,22 @@ void OLED_Str(unsigned char x,unsigned char y,unsigned char size,char *str,unsig
 
 }
 
+/*
+几何绘图
+*/
+
+
+/*画横线*/
+void OLED_HL(unsigned char x,unsigned char y,unsigned char size,unsigned char dot_type)
+{
+
+}
+
+/*画竖线*/
+void OLED_VL(unsigned char x,unsigned char y,unsigned char size,unsigned char dot_type)
+{
+
+}
 
 
 

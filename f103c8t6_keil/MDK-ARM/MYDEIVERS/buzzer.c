@@ -72,7 +72,7 @@ static uint32_t play_delay;
 
 if(notes == NULL)
 {
-	//play_ones(0,0);
+	play_ones(0,0);
 }else
 {
 	if(busy_flag==0)
