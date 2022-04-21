@@ -5,7 +5,7 @@
  *      Author: wuwen
  */
 #include "mymain.h"
-#include "hread_interface.h"
+
 
 #define morse_t1 150
 #define morse_t2 (morse_t1*3)
@@ -166,8 +166,12 @@ char getmorsecode(uint8_t len,uint8_t code)
 	return 0;
 }
 
+
+button  B1;
+
 void mymain()
 {
+	int mode=0;
 	uint32_t run_tick=0;
 	char str[16];
 	uint16_t fps=0,fps_=0;
@@ -175,24 +179,35 @@ void mymain()
 	OLED_Init();
 	
 	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);//启动n通道的pwm
-	MUTE(0);
+	MUTE(1);
 	//add_a_note(1000,50,1000);
+	
+	
 	while(1)
 	{
 		
-		OLED_Str(0,0,16,"hello",1);
+		switch(mode)
+		{
+			case 0:
+				//启动跳转模式
+				//用于读取系统配置后跳转到其他程序
 			
-		OLED_AL(10,20,10,21,1);
+				mode=1;
+				break;
+			case 1:
+				//主界面
+				fps_++;
+				sprintf(str,"FPS:%d",fps);
+				OLED_Str(0,56,8,str,1);
+				break;
+			case 2:
+				//菜单界面
+				break;
 		
-		OLED_AL(20,50,20,49,1);
+		}
+
 		
-		OLED_AL(20,50,30,50,1);
 		
-		OLED_AL(50,30,30,30,1);
-		
-		fps_++;
-		sprintf(str,"FPS:%d",fps);
-		OLED_Str(0,56,8,str,1);
 		
 		OLED_Cache_to_hardware();//刷新屏幕
 		buzzer_play_server();

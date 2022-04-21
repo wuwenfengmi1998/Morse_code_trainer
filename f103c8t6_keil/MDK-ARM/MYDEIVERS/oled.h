@@ -28,4 +28,6 @@ void OLED_Ascii(unsigned char x,unsigned char y,unsigned char size,char chr,unsi
 void OLED_Str(unsigned char x,unsigned char y,unsigned char size,char *str,unsigned char type);
 
 void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type);
+
+void OLED_square(int Start_x, int Start_y, int End_x, int End_y, char type);
 #endif /* OLED_H_ */

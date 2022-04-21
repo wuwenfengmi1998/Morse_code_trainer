@@ -11,7 +11,8 @@
 #include "main.h"
 #include "oled.h"
 #include "buzzer.h"
-
+#include "encode.h"
+#include "hread_interface.h"
 struct morsecode
 {
 	uint8_t len;

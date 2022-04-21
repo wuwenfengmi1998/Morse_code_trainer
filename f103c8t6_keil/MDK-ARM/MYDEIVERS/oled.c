@@ -138,10 +138,10 @@ void OLED_Cache_to_hardware()
 				if(b==0){b=1;OLED_Set_Pos(x,y);}			
 				OLED_WrDat(OLED_buff[y][x]);			
 				OLED_speedup[y][x]=OLED_buff[y][x];
-				OLED_buff[y][x]=0x00;
+				
 			}else
 			{b=0;}
-			
+			OLED_buff[y][x]=0x00;
 		}
 	}
 }
@@ -1033,10 +1033,15 @@ void OLED_VL(unsigned char x,unsigned char y,unsigned char size,unsigned char do
 void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type)
 {
 
-	int dx,dy;
+	int dx,dy,absx,absy;
 	
+	//计算差
 	dx=ex-sx;
 	dy=ey-sy;
+	//取绝对值 就是轴长
+	absx=dx<0?0-dx:dx;
+	absy=dy<0?0-dy:dy;
+	
 	
 	if(dx==0)
 	{
@@ -1046,7 +1051,7 @@ void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type)
 			{
 				OLED_set_dot(sx,y,dot_type);
 			}
-		}
+		}else 
 		if(dy<0)
 		{
 			for(int y=ey;y<sy;y++)
@@ -1066,7 +1071,7 @@ void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type)
 			{
 				OLED_set_dot(x,sy,dot_type);
 			}
-		}
+		}else
 		if(dx<0)
 		{
 			for(int x=ex;x<sx;x++)
@@ -1086,6 +1091,19 @@ void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type)
 }
 
 
+/*画方框*/
+void OLED_square(int Start_x, int Start_y, int End_x, int End_y, char type)
+{
+	if(Start_x > End_x){int i1 = Start_x; Start_x = End_x; End_x=i1;}
+	if(Start_y > End_y){int i1 = Start_y; Start_y = End_y; End_y=i1;}
+	for(; Start_x < End_x ; Start_x++)
+	{
+		for(int y2 = Start_y ; y2 < End_y ; y2++)
+		{
+			OLED_set_dot(Start_x, y2, type);
+		}
+	}
+}
 
 
 

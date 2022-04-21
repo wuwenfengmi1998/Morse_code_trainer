@@ -32,3 +32,4 @@ f103c8t6_keil\mymain.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex
 f103c8t6_keil\mymain.o: MYDEIVERS\oled.h
 f103c8t6_keil\mymain.o: MYDEIVERS\hread_interface.h
 f103c8t6_keil\mymain.o: MYDEIVERS\buzzer.h
+f103c8t6_keil\mymain.o: MYDEIVERS\encode.h

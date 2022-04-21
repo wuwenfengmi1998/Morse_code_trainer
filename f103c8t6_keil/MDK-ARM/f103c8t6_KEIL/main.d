@@ -32,3 +32,4 @@ f103c8t6_keil\main.o: ./MYDEIVERS/mymain.h
 f103c8t6_keil\main.o: ./MYDEIVERS/oled.h
 f103c8t6_keil\main.o: ./MYDEIVERS/hread_interface.h
 f103c8t6_keil\main.o: ./MYDEIVERS/buzzer.h
+f103c8t6_keil\main.o: ./MYDEIVERS/encode.h
