@@ -17,6 +17,10 @@
 #define Y_WIDTH 64
 #define Y_WIDTH_ 8
 
+
+
+
+
 void OLED_Init(void);
 
 void OLED_Cache_to_hardware();

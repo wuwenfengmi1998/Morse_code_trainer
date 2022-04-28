@@ -22,5 +22,5 @@ typedef struct
 } encoder;
 
 void GEI_BUTTON_CODE(button *bt);
-
+int GET_ENCODE(encoder *e);
 #endif /* ENCODER_H_ */

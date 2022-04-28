@@ -53,3 +53,10 @@ void GEI_BUTTON_CODE(button *bt)
 
 }
 
+int GET_ENCODE(encoder *e)
+{
+	int buff;
+	buff=e->code;
+	e->code=0;
+	return buff;
+}

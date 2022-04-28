@@ -167,20 +167,26 @@ char getmorsecode(uint8_t len,uint8_t code)
 }
 
 
-button  B1;
+button  B1;//创建一个按钮
+encoder E1;//创建一个编码器
+int mode=0;
+uint32_t run_tick=0;
+char str[16];
+uint16_t fps=0,fps_=0;
+
+int encode_c=0;
 
 void mymain()
 {
-	int mode=0;
-	uint32_t run_tick=0;
-	char str[16];
-	uint16_t fps=0,fps_=0;
+	//按钮定义接口
+	B1.GPIOx=en_c_GPIO_Port;
+	B1.GPIO_Pin=en_c_Pin;
 	
-	OLED_Init();
 	
+	OLED_Init();//屏幕初始化
 	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);//启动n通道的pwm
-	MUTE(1);
-	//add_a_note(1000,50,1000);
+	MUTE(1);//静音
+	//add_a_note(1000,50,1000);//开机响一声
 	
 	
 	while(1)
@@ -196,6 +202,14 @@ void mymain()
 				break;
 			case 1:
 				//主界面
+			
+				sprintf(str,"BUTTON:%d",B1.code);
+				OLED_Str(0,0,8,str,1);
+			
+				encode_c+=GET_ENCODE(&E1);
+				sprintf(str,"ENCODE:%d",encode_c);
+				OLED_Str(0,8,8,str,1);
+			
 				fps_++;
 				sprintf(str,"FPS:%d",fps);
 				OLED_Str(0,56,8,str,1);
@@ -208,7 +222,7 @@ void mymain()
 
 		
 		
-		
+		GEI_BUTTON_CODE(&B1);//循环更新按钮
 		OLED_Cache_to_hardware();//刷新屏幕
 		buzzer_play_server();
 		if(HAL_GetTick()>run_tick)
@@ -220,4 +234,31 @@ void mymain()
 		}
 	
 	}
+}
+
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+
+	switch (GPIO_Pin)
+	{
+  	case en_a_Pin:
+		switch(HAL_GPIO_ReadPin(en_b_GPIO_Port,en_b_Pin))
+		{
+			case 1:
+				E1.code+=1;
+				E1.move_flag=1;
+				break;
+			case 0:
+				E1.code-=1;
+				E1.move_flag=1;
+				break;
+		}
+		break;
+
+  	default:
+  	break;
+
+  	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+  }
 }

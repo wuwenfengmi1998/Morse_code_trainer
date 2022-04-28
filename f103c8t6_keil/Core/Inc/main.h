@@ -71,6 +71,11 @@ void Error_Handler(void);
 #define run_led_GPIO_Port GPIOB
 #define en_c_Pin GPIO_PIN_3
 #define en_c_GPIO_Port GPIOB
+#define en_a_Pin GPIO_PIN_4
+#define en_a_GPIO_Port GPIOB
+#define en_a_EXTI_IRQn EXTI4_IRQn
+#define en_b_Pin GPIO_PIN_5
+#define en_b_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

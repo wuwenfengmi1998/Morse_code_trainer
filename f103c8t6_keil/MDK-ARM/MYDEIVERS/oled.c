@@ -1105,10 +1105,3 @@ void OLED_square(int Start_x, int Start_y, int End_x, int End_y, char type)
 	}
 }
 
-
-
-
-
-
-
-

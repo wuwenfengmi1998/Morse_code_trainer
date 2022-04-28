@@ -523,6 +523,11 @@
               <FileType>1</FileType>
               <FilePath>.\MYDEIVERS\buzzer.c</FilePath>
             </File>
+            <File>
+              <FileName>encode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MYDEIVERS\encode.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
