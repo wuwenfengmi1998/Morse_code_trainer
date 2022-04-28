@@ -1105,3 +1105,92 @@ void OLED_square(int Start_x, int Start_y, int End_x, int End_y, char type)
 	}
 }
 
+int SHOW_MENU(menu *m,int encoder,char button,char lan)
+{
+	int return_code=-1;
+	char str[32];
+	const char *list;
+	uint16_t list_len=0;
+	uint16_t a=0;
+	uint16_t b=0;
+	uint16_t c=0;
+	uint16_t d=0;
+
+	//get list
+	switch(lan)
+	{
+	case 0:
+		list=m->list_en;
+		break;
+	case 1:
+		list=m->list_ch;
+		break;
+	default :
+		return -1;
+
+	}
+
+
+
+	//check how many list
+	while(list[a]!='\0')
+	{
+		if(list[a]=='\n'){list_len++;}
+		a++;
+	}
+
+	m->sele+=encoder;
+
+	if(m->sele<0){m->sele=0;}
+	if(m->sele>list_len){m->sele=list_len;}
+
+	if(m->sele<m->list_dis_top+3){m->list_dis_top--;}
+	if(m->sele>m->list_dis_top){if((m->list_dis_top+3)<list_len){m->list_dis_top++;}}
+
+	m->list_dis_top=((list_len+1>4)?(m->list_dis_top):0);
+
+	//display list
+	for(d=0;d<m->list_dis_top;d++)
+	{
+		while((*list!='\0')&&(*list!='\n'))
+		{
+			list++;
+		}
+		list++;
+
+	}
+
+
+	for(b=0;b<(list_len+1>4?4:list_len+1);b++)
+	{
+		if((m->list_dis_top+b)==m->sele)
+		{
+			str[c]='>';
+
+		}else
+		{
+			str[c]=' ';
+		}
+		c++;
+		while((*list!='\0')&&(*list!='\n'))
+		{
+			str[c]=*list;
+			c++;
+			list++;
+		}
+		str[c]='\0';
+		OLED_Str(0, 16*b, 16, str, 1);
+		c=0;
+		list++;
+
+	}
+
+	if(button==1)
+	{
+		return_code=m->sele;
+	}
+
+	return return_code;
+
+}
+

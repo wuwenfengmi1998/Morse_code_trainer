@@ -18,6 +18,13 @@
 #define Y_WIDTH_ 8
 
 
+typedef struct
+{
+	const char *list_en;
+	const char *list_ch;
+	int sele;
+	int list_dis_top;
+}menu;
 
 
 
@@ -34,4 +41,7 @@ void OLED_Str(unsigned char x,unsigned char y,unsigned char size,char *str,unsig
 void OLED_AL(int sx,int sy,int ex,int ey,unsigned char dot_type);
 
 void OLED_square(int Start_x, int Start_y, int End_x, int End_y, char type);
+
+int SHOW_MENU(menu *m,int encoder,char button,char lan);
+
 #endif /* OLED_H_ */

@@ -170,11 +170,20 @@ char getmorsecode(uint8_t len,uint8_t code)
 button  B1;//创建一个按钮
 encoder E1;//创建一个编码器
 int mode=0;
-uint32_t run_tick=0;
+uint32_t run_tick=0,jump_tick=0;
 char str[16];
 uint16_t fps=0,fps_=0;
+char sys_lan=0;
 
 int encode_c=0;
+
+menu menu_main=
+{
+		"Back\nInput\nBuzzer\nOLED\nAuto\nType\nLanguage\nAbout",
+		"返回\n",
+
+		0,0
+};
 
 void mymain()
 {
@@ -213,9 +222,23 @@ void mymain()
 				fps_++;
 				sprintf(str,"FPS:%d",fps);
 				OLED_Str(0,56,8,str,1);
+			
+				if(B1.code==255)
+				{
+					mode=2;
+					jump_tick=HAL_GetTick()+10000;
+				}
+				
 				break;
 			case 2:
 				//菜单界面
+				switch(SHOW_MENU(&menu_main,GET_ENCODE(&E1),B1.code,sys_lan))
+				{
+					case 0:
+						mode=1;
+						break;
+				}
+				if(HAL_GetTick()>jump_tick){mode=1;}
 				break;
 		
 		}
@@ -259,6 +282,6 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   	default:
   	break;
 
-  	__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
+  	//__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
   }
 }
