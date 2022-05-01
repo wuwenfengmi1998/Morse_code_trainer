@@ -528,6 +528,11 @@
               <FileType>1</FileType>
               <FilePath>.\MYDEIVERS\encode.c</FilePath>
             </File>
+            <File>
+              <FileName>morsr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MYDEIVERS\morsr.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

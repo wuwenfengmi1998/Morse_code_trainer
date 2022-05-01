@@ -3,8 +3,10 @@
 void GEI_BUTTON_CODE(button *bt)
 {
     #define t 500 //????(ms)
+	
+		bt->flag=HAL_GPIO_ReadPin(bt->GPIOx,bt->GPIO_Pin);
     bt->code=0;
-    if(HAL_GPIO_ReadPin(bt->GPIOx,bt->GPIO_Pin)==0)
+    if(bt->flag==0)
     {
         if(bt->lock==0)
         {
@@ -33,7 +35,7 @@ void GEI_BUTTON_CODE(button *bt)
 
     }
 
-    if(HAL_GPIO_ReadPin(bt->GPIOx,bt->GPIO_Pin)==1)
+    if(bt->flag==1)
     {
         if(bt->lock==1)
         {

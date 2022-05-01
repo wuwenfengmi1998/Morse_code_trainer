@@ -14,9 +14,12 @@
 extern I2C_HandleTypeDef hi2c1;
 extern TIM_HandleTypeDef htim2;
 #define RUNLED(x)    HAL_GPIO_WritePin(run_led_GPIO_Port, run_led_Pin, x)
+#define PWR_EN(x)    HAL_GPIO_WritePin(pwr_en_GPIO_Port, pwr_en_Pin, x)
 #define MUTE(x)      HAL_GPIO_WritePin(mute_GPIO_Port, mute_Pin, x)
 #define tack_a()      HAL_GPIO_ReadPin(tack_a_GPIO_Port, tack_a_Pin)
 #define tack_b()      HAL_GPIO_ReadPin(tack_b_GPIO_Port, tack_b_Pin)
+
+#define en_c()      HAL_GPIO_ReadPin(en_c_GPIO_Port, en_c_Pin)
 
 
 

@@ -33,3 +33,4 @@ f103c8t6_keil\mymain.o: MYDEIVERS\oled.h
 f103c8t6_keil\mymain.o: MYDEIVERS\hread_interface.h
 f103c8t6_keil\mymain.o: MYDEIVERS\buzzer.h
 f103c8t6_keil\mymain.o: MYDEIVERS\encode.h
+f103c8t6_keil\mymain.o: MYDEIVERS\morsr.h

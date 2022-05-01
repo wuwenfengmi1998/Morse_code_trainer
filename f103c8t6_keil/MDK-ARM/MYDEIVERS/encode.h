@@ -7,6 +7,7 @@
 
 typedef struct button
 {
+	uint8_t  flag;
 	uint16_t  code;
 	uint8_t   lock;
 	uint32_t  time;

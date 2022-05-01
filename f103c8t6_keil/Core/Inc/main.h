@@ -71,8 +71,11 @@ void Error_Handler(void);
 #define run_led2_GPIO_Port GPIOB
 #define run_led_Pin GPIO_PIN_15
 #define run_led_GPIO_Port GPIOB
+#define pwr_en_Pin GPIO_PIN_8
+#define pwr_en_GPIO_Port GPIOA
 #define en_c_Pin GPIO_PIN_3
 #define en_c_GPIO_Port GPIOB
+#define en_c_EXTI_IRQn EXTI3_IRQn
 #define en_a_Pin GPIO_PIN_4
 #define en_a_GPIO_Port GPIOB
 #define en_a_EXTI_IRQn EXTI4_IRQn

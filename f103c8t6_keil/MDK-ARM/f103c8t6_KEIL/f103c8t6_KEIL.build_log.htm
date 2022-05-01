@@ -3,7 +3,7 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¦ÌVision V5.36.0.0
+IDE-Version: µVision V5.36.0.0
 Copyright (C) 2021 ARM Ltd and ARM Germany GmbH. All rights reserved.
 License Information: 1 1, 1, LIC=----
  
@@ -22,63 +22,41 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 C:\Users\wuwen\morse_code_trainer\f103c8t6_keil\MDK-ARM\f103c8t6_KEIL.uvprojx
-Project File Date:  04/30/2022
+Project File Date:  05/01/2022
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'f103c8t6_KEIL'
-assembling startup_stm32f103xb.s...
-compiling stm32f1xx_hal_msp.c...
-compiling stm32f1xx_it.c...
+compiling encode.c...
+MYDEIVERS\encode.c(64): warning:  #1-D: last line of file ends without a newline
+  }
+MYDEIVERS\encode.c: 1 warning, 0 errors
 compiling main.c...
 ./MYDEIVERS/oled.h(33): warning:  #1295-D: Deprecated declaration OLED_Cache_to_hardware - give arg types
   void OLED_Cache_to_hardware();
-./MYDEIVERS/mymain.h(25): warning:  #1295-D: Deprecated declaration mymain - give arg types
+./MYDEIVERS/morsr.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif /* MYMAIN_H_ */
+./MYDEIVERS/mymain.h(26): warning:  #1295-D: Deprecated declaration mymain - give arg types
   void mymain();
-../Core/Src/main.c: 2 warnings, 0 errors
-compiling stm32f1xx_hal_gpio_ex.c...
-compiling stm32f1xx_hal.c...
-compiling stm32f1xx_hal_i2c.c...
-compiling stm32f1xx_hal_rcc_ex.c...
-compiling stm32f1xx_hal_rcc.c...
-compiling stm32f1xx_hal_gpio.c...
-compiling stm32f1xx_hal_cortex.c...
-compiling stm32f1xx_hal_dma.c...
-compiling stm32f1xx_hal_pwr.c...
-compiling stm32f1xx_hal_flash_ex.c...
-compiling stm32f1xx_hal_flash.c...
-compiling stm32f1xx_hal_exti.c...
-compiling system_stm32f1xx.c...
-compiling stm32f1xx_hal_tim_ex.c...
-compiling stm32f1xx_hal_tim.c...
-compiling hread_interface.c...
+../Core/Src/main.c: 3 warnings, 0 errors
 compiling mymain.c...
 MYDEIVERS\oled.h(33): warning:  #1295-D: Deprecated declaration OLED_Cache_to_hardware - give arg types
   void OLED_Cache_to_hardware();
-MYDEIVERS\mymain.h(25): warning:  #1295-D: Deprecated declaration mymain - give arg types
+MYDEIVERS\morsr.h(8): warning:  #1-D: last line of file ends without a newline
+  #endif /* MYMAIN_H_ */
+MYDEIVERS\mymain.h(26): warning:  #1295-D: Deprecated declaration mymain - give arg types
   void mymain();
-MYDEIVERS\mymain.c(200): warning:  #188-D: enumerated type mixed with another type
+MYDEIVERS\mymain.c(192): warning:  #188-D: enumerated type mixed with another type
+  	PWR_EN(1);
+MYDEIVERS\mymain.c(202): warning:  #188-D: enumerated type mixed with another type
   	MUTE(0);
-MYDEIVERS\mymain.c(217): warning:  #223-D: function "sprintf" declared implicitly
-  				sprintf(str,"BUTTON:%d",B1.code);
-MYDEIVERS\mymain.c(310): warning:  #1-D: last line of file ends without a newline
+MYDEIVERS\mymain.c(225): warning:  #223-D: function "sprintf" declared implicitly
+  				sprintf(str,"FPS:%d",fps);
+MYDEIVERS\mymain.c(325): warning:  #1-D: last line of file ends without a newline
   }
-MYDEIVERS\mymain.c: 5 warnings, 0 errors
-compiling oled.c...
-MYDEIVERS\oled.h(33): warning:  #1295-D: Deprecated declaration OLED_Cache_to_hardware - give arg types
-  void OLED_Cache_to_hardware();
-MYDEIVERS\oled.c(1036): warning:  #550-D: variable "absx"  was set but never used
-  	int dx,dy,absx,absy;
-MYDEIVERS\oled.c(1036): warning:  #550-D: variable "absy"  was set but never used
-  	int dx,dy,absx,absy;
-MYDEIVERS\oled.c: 3 warnings, 0 errors
-compiling buzzer.c...
-compiling encode.c...
-MYDEIVERS\encode.c(62): warning:  #1-D: last line of file ends without a newline
-  }
-MYDEIVERS\encode.c: 1 warning, 0 errors
+MYDEIVERS\mymain.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=8984 RO-data=3768 RW-data=68 ZI-data=3948  
+Program Size: Code=8964 RO-data=3812 RW-data=68 ZI-data=3948  
 FromELF: creating hex file...
 "f103c8t6_KEIL\f103c8t6_KEIL.axf" - 0 Error(s), 11 Warning(s).
 
@@ -104,7 +82,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:5.5.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:12
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

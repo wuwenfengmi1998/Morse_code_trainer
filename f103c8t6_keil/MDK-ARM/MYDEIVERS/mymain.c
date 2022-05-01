@@ -181,14 +181,16 @@ int test_code=0;
 
 menu menu_main=
 {
-		"Back\nInput\nBuzzer\nOLED\nAuto\nType\nLanguage\nAbout",
-		"返回\n",
+		"Back\nInput mode\nBuzzer\nDisplay\nLanguage\nAbout",
+	"返回\n输入模式\n蜂鸣器\n显示\n语言\n关于",
 
 		0,0
 };
 
 void mymain()
 {
+	PWR_EN(1);
+	
 	//按钮定义接口
 	B1.GPIOx=en_c_GPIO_Port;
 	B1.GPIO_Pin=en_c_Pin;
@@ -202,6 +204,8 @@ void mymain()
 	//play_ones(1000,50);
 	while(1)
 	{
+		GEI_BUTTON_CODE(&B1);//循环更新按钮
+		encode_c=GET_ENCODE(&E1);
 		
 		switch(mode)
 		{
@@ -214,15 +218,8 @@ void mymain()
 			case 1:
 				//主界面
 			
-				sprintf(str,"BUTTON:%d",B1.code);
-				OLED_Str(0,0,8,str,1);
-			
-				encode_c+=GET_ENCODE(&E1);
-				sprintf(str,"ENCODE:%d",encode_c);
-				OLED_Str(0,8,8,str,1);
 				
-				sprintf(str,"testcode:%d",test_code);
-				OLED_Str(0,16,8,str,1);
+
 			
 				fps_++;
 				sprintf(str,"FPS:%d",fps);
@@ -237,7 +234,11 @@ void mymain()
 				break;
 			case 2:
 				//菜单界面
-				switch(SHOW_MENU(&menu_main,GET_ENCODE(&E1),B1.code,sys_lan))
+				if(encode_c!=0)
+				{
+					jump_tick=HAL_GetTick()+10000;
+				}
+				switch(SHOW_MENU(&menu_main,encode_c,B1.code,sys_lan))
 				{
 					case 0:
 						mode=1;
@@ -250,7 +251,7 @@ void mymain()
 
 		
 		
-		GEI_BUTTON_CODE(&B1);//循环更新按钮
+		
 		OLED_Cache_to_hardware();//刷新屏幕
 		
 		if(HAL_GetTick()>run_tick)
@@ -264,18 +265,18 @@ void mymain()
 	}
 }
 
-
+//外部中断回调
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 
-	switch (GPIO_Pin)
+	switch (GPIO_Pin)//中断线监测
 	{
-  	case en_a_Pin:
-			switch(HAL_GPIO_ReadPin(en_b_GPIO_Port,en_b_Pin))
+  	case en_a_Pin: //编码器A脚 这个脚在config是只监测下降沿
+			switch(HAL_GPIO_ReadPin(en_b_GPIO_Port,en_b_Pin))//监测编码器B脚
 			{
-				case 1:
+				case 1://通过监测B脚的状态识别正反转
 					E1.code+=1;
-					E1.move_flag=1;
+					E1.move_flag=1;//发生旋转的标记
 					break;
 				case 0:
 					E1.code-=1;
@@ -284,7 +285,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			}
 		break;
 
-		
+		//外部电键输入
 		case tack_a_Pin:
 			test_code++;
 		break;
@@ -292,6 +293,20 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			test_code--;
 		break;
 		
+		
+		case en_c_Pin://编码器C脚 按钮
+			switch(en_c())//监测是上升沿还是下降沿
+			{
+				case 0:
+					
+					mo_one_tick(0);
+					break;
+				case 1:
+					
+					mo_one_tick(1);
+					break;
+			}
+			break;
   	default:
   	break;
 
