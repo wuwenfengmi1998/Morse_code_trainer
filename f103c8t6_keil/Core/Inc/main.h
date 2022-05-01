@@ -63,8 +63,10 @@ void Error_Handler(void);
 #define mute_GPIO_Port GPIOA
 #define tack_a_Pin GPIO_PIN_0
 #define tack_a_GPIO_Port GPIOB
+#define tack_a_EXTI_IRQn EXTI0_IRQn
 #define tack_b_Pin GPIO_PIN_1
 #define tack_b_GPIO_Port GPIOB
+#define tack_b_EXTI_IRQn EXTI1_IRQn
 #define run_led2_Pin GPIO_PIN_12
 #define run_led2_GPIO_Port GPIOB
 #define run_led_Pin GPIO_PIN_15

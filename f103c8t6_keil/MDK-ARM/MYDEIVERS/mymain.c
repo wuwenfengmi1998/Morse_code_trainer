@@ -177,6 +177,8 @@ char sys_lan=0;
 
 int encode_c=0;
 
+int test_code=0;
+
 menu menu_main=
 {
 		"Back\nInput\nBuzzer\nOLED\nAuto\nType\nLanguage\nAbout",
@@ -194,10 +196,10 @@ void mymain()
 	
 	OLED_Init();//屏幕初始化
 	HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_3);//启动n通道的pwm
-	MUTE(1);//静音
-	//add_a_note(1000,50,1000);//开机响一声
-	
-	
+	HAL_TIM_Base_Start_IT(&htim3);
+	MUTE(0);
+
+	//play_ones(1000,50);
 	while(1)
 	{
 		
@@ -218,6 +220,9 @@ void mymain()
 				encode_c+=GET_ENCODE(&E1);
 				sprintf(str,"ENCODE:%d",encode_c);
 				OLED_Str(0,8,8,str,1);
+				
+				sprintf(str,"testcode:%d",test_code);
+				OLED_Str(0,16,8,str,1);
 			
 				fps_++;
 				sprintf(str,"FPS:%d",fps);
@@ -247,7 +252,7 @@ void mymain()
 		
 		GEI_BUTTON_CODE(&B1);//循环更新按钮
 		OLED_Cache_to_hardware();//刷新屏幕
-		buzzer_play_server();
+		
 		if(HAL_GetTick()>run_tick)
 		{
 			run_tick+=1000;
@@ -266,22 +271,40 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	switch (GPIO_Pin)
 	{
   	case en_a_Pin:
-		switch(HAL_GPIO_ReadPin(en_b_GPIO_Port,en_b_Pin))
-		{
-			case 1:
-				E1.code+=1;
-				E1.move_flag=1;
-				break;
-			case 0:
-				E1.code-=1;
-				E1.move_flag=1;
-				break;
-		}
+			switch(HAL_GPIO_ReadPin(en_b_GPIO_Port,en_b_Pin))
+			{
+				case 1:
+					E1.code+=1;
+					E1.move_flag=1;
+					break;
+				case 0:
+					E1.code-=1;
+					E1.move_flag=1;
+					break;
+			}
 		break;
 
+		
+		case tack_a_Pin:
+			test_code++;
+		break;
+		case tack_b_Pin:
+			test_code--;
+		break;
+		
   	default:
   	break;
 
   	//__HAL_GPIO_EXTI_CLEAR_IT(GPIO_Pin);
   }
+}
+
+
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)//1ms
+{
+    if (htim == (&htim3))
+		{
+		
+		}
 }

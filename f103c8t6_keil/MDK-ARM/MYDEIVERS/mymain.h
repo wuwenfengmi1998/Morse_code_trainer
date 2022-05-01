@@ -20,6 +20,8 @@ struct morsecode
 	char letter;
 };
 
+extern TIM_HandleTypeDef htim3;
+
 void mymain();
 
 #endif /* MYMAIN_H_ */
