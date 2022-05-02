@@ -14,12 +14,7 @@
 #include "encode.h"
 #include "hread_interface.h"
 #include "morsr.h"
-struct morsecode
-{
-	uint8_t len;
-	uint8_t code;
-	char letter;
-};
+
 
 extern TIM_HandleTypeDef htim3;
 
