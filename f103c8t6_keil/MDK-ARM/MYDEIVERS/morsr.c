@@ -142,6 +142,7 @@ uint8_t  moser_code_len=0;
 uint8_t  moser_code=0;
 uint32_t moser_tick_time=0;
 uint8_t  moser_input_flag=0;
+uint8_t  moser_input_true=0;
 
 void mo_server()
 {
@@ -154,7 +155,24 @@ void mo_server()
 			moser_buff[moser_buff_int+a]='\0';
 		}
 		moser_buff[moser_buff_int]=get_morse_code(moser_code_len,moser_code);
+		if(moser_buff[moser_buff_int]!=' '){moser_input_true=1;moser_tick_time=HAL_GetTick()+400;}
 		moser_buff_int+=1;
+		
+
+		
+		
+	
+		moser_code_len=0;
+		moser_code=0;
+	}
+	
+		if(moser_input_true==1&&HAL_GetTick()>moser_tick_time)
+		{
+			moser_input_true=0;
+			moser_buff[moser_buff_int]=' ';
+			moser_buff_int+=1;
+		}
+		
 		if(moser_buff_int==64)
 		{
 			for(int a=0;a<64;a++)
@@ -162,10 +180,7 @@ void mo_server()
 				moser_buff[a]='\0';
 			}
 			moser_buff_int=0;
-		}		
-		moser_code_len=0;
-		moser_code=0;
-	}
+		}	
 
 }
 
