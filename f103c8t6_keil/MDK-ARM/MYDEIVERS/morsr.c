@@ -136,7 +136,7 @@ char get_morse_code(uint8_t len,uint8_t code)
 
 
 
-char moser_buff[64+8]={0};
+char moser_buff[moser_buff_size+8]={0};
 uint8_t  moser_buff_int=0;
 uint8_t  moser_code_len=0;
 uint8_t  moser_code=0;
@@ -155,7 +155,7 @@ void mo_server()
 			moser_buff[moser_buff_int+a]='\0';
 		}
 		moser_buff[moser_buff_int]=get_morse_code(moser_code_len,moser_code);
-		if(moser_buff[moser_buff_int]!=' '){moser_input_true=1;moser_tick_time=HAL_GetTick()+400;}
+		if(moser_buff[moser_buff_int]!=' '){moser_input_true=1;moser_tick_time=HAL_GetTick()+morse_t1;}
 		moser_buff_int+=1;
 		
 
@@ -173,9 +173,9 @@ void mo_server()
 			moser_buff_int+=1;
 		}
 		
-		if(moser_buff_int==64)
+		if(moser_buff_int==moser_buff_size)
 		{
-			for(int a=0;a<64;a++)
+			for(int a=0;a<moser_buff_size;a++)
 			{
 				moser_buff[a]='\0';
 			}
@@ -189,7 +189,7 @@ void mo_di()
 	moser_buff[moser_buff_int+moser_code_len]='.';
 	moser_code_len+=1;
 	if(moser_code_len==8){moser_code_len=0;}
-	moser_tick_time=HAL_GetTick()+400;
+	moser_tick_time=HAL_GetTick()+morse_t2;
 	moser_input_flag=1;
 }
 
@@ -199,7 +199,7 @@ void mo_da()
 	moser_code|=(0x80>>moser_code_len);
 	moser_code_len+=1;
 	if(moser_code_len==8){moser_code_len=0;}
-	moser_tick_time=HAL_GetTick()+400;
+	moser_tick_time=HAL_GetTick()+morse_t2;
 	moser_input_flag=1;
 }
 
@@ -219,13 +219,13 @@ void mo_one_tick(uint8_t i)
 				break;
 			case 1:
 				tick_time_cat=HAL_GetTick()-tick_time;
-				if(tick_time_cat<100)
+				if(tick_time_cat<100)//die out
 				{
 					
-				}else if(tick_time_cat<200)
+				}else if(tick_time_cat<morse_t1)
 				{
 					mo_di();
-				}else if(tick_time_cat<400)
+				}else if(tick_time_cat<morse_t2)
 				{
 					mo_da();
 				}else

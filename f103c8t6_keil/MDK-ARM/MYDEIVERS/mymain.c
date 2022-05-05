@@ -7,9 +7,7 @@
 #include "mymain.h"
 
 
-#define morse_t1 150
-#define morse_t2 (morse_t1*3)
-#define morse_hz 100
+
 
 #define morse_play_t1 50
 #define morse_play_t2 (morse_play_t1*3)

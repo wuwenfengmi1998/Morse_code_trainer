@@ -3,7 +3,12 @@
 
 #include "main.h"
 
-extern char moser_buff[64+8];
+#define morse_t1 150
+#define morse_t2 (morse_t1*3)
+#define morse_hz 100
+
+#define moser_buff_size 147
+extern char moser_buff[moser_buff_size+8];
 
 struct morsecode
 {
