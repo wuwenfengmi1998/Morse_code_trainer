@@ -21,7 +21,7 @@
 
 
 
-button  B1;//创建一个按钮
+button  B1,TACKA,TACKB;//创建一个按钮
 encoder E1;//创建一个编码器
 int mode=0;
 uint32_t run_tick=0,jump_tick=0;
@@ -59,9 +59,7 @@ void mymain()
 {
 	PWR_EN(1);
 	
-	//按钮定义接口
-	B1.GPIOx=en_c_GPIO_Port;
-	B1.GPIO_Pin=en_c_Pin;
+
 	
 	
 	OLED_Init();//屏幕初始化
@@ -71,9 +69,12 @@ void mymain()
 	MUTE(0);
 
 	BUZZER_PLAY_NOTES(1000,1000,50);
+	
+	B1.config_longtimes=1;//启用B1按钮的长按检测
+	
 	while(1)
 	{
-		GEI_BUTTON_CODE(&B1);//循环更新按钮
+		GEI_BUTTON_CODE(&B1,en_c());//循环更新按钮
 		encode_c=GET_ENCODE(&E1);
 		
 		switch(mode)
@@ -86,11 +87,13 @@ void mymain()
 				break;
 			case 1:
 				//主界面
-				if(encode_c>0)
+				GEI_BUTTON_CODE(&TACKA,tack_a());
+				GEI_BUTTON_CODE(&TACKB,tack_b());
+				if(encode_c>0||TACKB.code!=0)
 				{
 					di();
 				}
-				if(encode_c<0)
+				if(encode_c<0||TACKA.code!=0)
 				{
 					da();
 				}			
@@ -162,7 +165,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 					break;
 			}
 		break;
-
+/*
 		//外部电键输入
 		case tack_a_Pin:
 			switch(tack_a())
@@ -199,6 +202,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 					break;
 			}
 			break;
+*/			
+
   	default:
   	break;
 

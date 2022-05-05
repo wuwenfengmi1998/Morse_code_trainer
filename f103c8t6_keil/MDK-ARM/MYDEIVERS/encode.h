@@ -12,8 +12,7 @@ typedef struct button
 	uint8_t   lock;
 	uint32_t  time;
 	uint16_t  times;
-	GPIO_TypeDef *GPIOx;
-	uint16_t GPIO_Pin;
+	uint8_t  config_longtimes;
 } button;
 
 typedef struct
@@ -22,6 +21,6 @@ typedef struct
 	uint8_t   move_flag:1;
 } encoder;
 
-void GEI_BUTTON_CODE(button *bt);
+void GEI_BUTTON_CODE(button *bt,uint8_t flag);
 int GET_ENCODE(encoder *e);
 #endif /* ENCODER_H_ */
